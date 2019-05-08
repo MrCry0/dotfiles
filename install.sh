@@ -26,17 +26,31 @@ echo -n Creating backup directory for vim plugins...
 mkdir -p ${BACKUP_VP} || { echo "Can't make backup directory \"${BACKUP_VP}\" for vim plugins"; exit; }
 echo Done
 
-for local file in $(ls ${DOTFILES}/[^.]* | xargs -n 1 basename); do
+for file in $(ls ${DOTFILES}/[^.]* | xargs -n 1 basename); do
 	echo -n Installing ${file}...
-	mv ~/.${file} ${BACKUP_DF}/ || { echo "Can't backup ${file} into ${BACKUP_DF}"; exit; }
-	ln -s ${DOTFILES}/${file} ~/.${file};
+    F=~/.${file}
+	if [ -e ${F} ]; then
+        if [ -f ${F} ]; then
+            mv -f ${F} ${BACKUP_DF}/ || { echo "Can't backup ${F} into ${BACKUP_DF}"; exit; }
+        else
+            rm -f ${F} || { echo "${F} is not a file and can't be deleted"; exit; }
+        fi
+    fi
+	ln -s ${DOTFILES}/${file} ${F};
 	echo Done
 done
 
-for local file in $(ls ${VIMPLUGINS_SRC}/[^.]*.vim | xargs -n 1 basename); do
+for file in $(ls ${VIMPLUGINS_SRC}/[^.]*.vim | xargs -n 1 basename); do
 	echo -n Installing vim-plugin ${file}...
-	mv ~/.vim/plugin/$file ${BACKUP_VP}/;
-	ln -s ${VIMPLUGINS_SRC}/$file ${VIMPLUGINS_DST}/$file;
+    F=${VIMPLUGINS_DST}/${file}
+	if [ -e ${F} ]; then
+        if [ -f ${F} ]; then
+            mv -f ${F} ${BACKUP_VP}/ || { echo "Can't backup ${F} into ${BACKUP_VP}"; exit; }
+        else
+            rm -f ${F} || { echo "${F} is not a file and can't be deleted"; exit; }
+        fi
+    fi
+	ln -s ${VIMPLUGINS_SRC}/$file ${VIMPLUGINS_DST}/${file};
 	echo Done
 done
 
