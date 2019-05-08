@@ -1,6 +1,6 @@
 [user]
-    name = Martin T. H. Sandsmark
-    email = martin.sandsmark@kde.org
+    name = Oleksandr Suvorov
+    email = cryosay@gmail.com
 [color]
     ui = true
     branch = always
@@ -10,12 +10,8 @@
     pager = true
     decorate = always
     showbranch = always
-[url "git@github.com:sandsmark/"]
+[url "git@github.com:MrCry0/"]
     insteadOf = github:
-[url "git://anongit.kde.org/"]
-    insteadOf = kde:
-[url "git@git.kde.org:"]
-    pushInsteadOf = kde:
 [core]
     excludesfile = ~/.gitexcludes
     autocrlf = false
@@ -38,4 +34,4 @@
 [http]
     cookiefile = ~/.gitcookies
 [blame]
-    date = relative
+#    date = relative
