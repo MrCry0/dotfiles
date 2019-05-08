@@ -115,7 +115,6 @@ function lf    { ls --color=auto -FAq  $@; }
 
 function make    { ionice nice make $@; }
 
-function find  { stderred find "$@"; }
 function ff    { find . -name $@; }
 
 function dmsg  { dmesg | p; }
