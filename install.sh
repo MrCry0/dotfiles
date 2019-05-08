@@ -13,3 +13,9 @@ done
 
 touch ~/.bash_history
 
+echo Installing git-aware-prompt bash plugin
+git submodule init git-aware-prompt
+git submodule update git-aware-prompt
+rm -rf ~/.bash/git-aware-prompt
+ln -s ${PWD}/git-aware-prompt ~/.bash/
+
