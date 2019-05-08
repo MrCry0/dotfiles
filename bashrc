@@ -129,6 +129,10 @@ function h2b    { echo "ibase=16;obase=2; $(echo $@ | tr [:lower:] [:upper:])" |
 function b2h    { echo "ibase=2;obase=16; $@"|bc; }
 function d2h    { echo "obase=16; $@"|bc; }
 
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 function mac-vendor {
     MAC="$(echo $@ | sed 's/ //g' | sed 's/-//g' | sed 's/://g' | cut -c1-6)";
 
