@@ -1,0 +1,10 @@
+# for git
+alias gca='git commit -a'
+alias gcp='git cherry-pick'
+alias gfu='git fetch upstream'
+alias go='git checkout'
+alias gpo='git push origin'
+alias gpu='git pull upstream'
+alias grp='git remote prune'
+alias grs='git remote show'
+alias gru='git remote update'
