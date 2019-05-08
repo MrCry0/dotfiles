@@ -11,20 +11,22 @@
 " the buffer's path matches one of the pattern. In the following example,
 " options will be applied only if "/linux/" or "/kernel" is in buffer's path.
 "
-let g:linuxsty_patterns = [ "src/linux", "src/mame", "src/uboot", "src/efibootmgr" ]
+"   let g:linuxsty_patterns = [ "/linux/", "/kernel/" ]
 
 if exists("g:loaded_linuxsty")
     finish
 endif
 let g:loaded_linuxsty = 1
 
-" set wildignore+=*.ko,*.mod.c,*.order,modules.builtin
+set wildignore+=*.ko,*.mod.c,*.order,modules.builtin
 
 augroup linuxsty
     autocmd!
 
-    autocmd FileType c,cpp,dts,asm,cfg call s:LinuxConfigure()
-    autocmd FileType diff,kconfig setlocal tabstop=8
+    autocmd FileType c,cpp call s:LinuxConfigure()
+    autocmd FileType diff setlocal ts=8
+    autocmd FileType kconfig setlocal ts=8 sw=8 sts=8 noet
+    autocmd FileType dts setlocal ts=8 sw=8 sts=8 noet
 augroup END
 
 function s:LinuxConfigure()
@@ -59,7 +61,7 @@ function s:LinuxFormatting()
     setlocal tabstop=8
     setlocal shiftwidth=8
     setlocal softtabstop=8
-"    setlocal textwidth=80
+    setlocal textwidth=80
     setlocal noexpandtab
 
     setlocal cindent
@@ -76,7 +78,7 @@ function s:LinuxHighlighting()
     highlight default link LinuxError ErrorMsg
 
     syn match LinuxError / \+\ze\t/     " spaces before tab
-    " syn match LinuxError /\%81v.\+/     " virtual column 81 and more
+    syn match LinuxError /\%>80v[^()\{\}\[\]<>]\+/ " virtual column 81 and more
 
     " Highlight trailing whitespace, unless we're in insert mode and the
     " cursor's placed right after the whitespace. This prevents us from having
