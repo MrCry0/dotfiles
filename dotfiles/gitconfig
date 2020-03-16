@@ -23,7 +23,6 @@
 [diff]
     algorithm = histogram
     compactionHeuristic = true
-    noprefix = true
 [rerere]
     enabled = true
     autoupdate = true
@@ -35,3 +34,5 @@
     cookiefile = ~/.gitcookies
 [blame]
 #    date = relative
+[checkout]
+	defaultRemote = upstream
