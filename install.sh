@@ -1,10 +1,12 @@
 #!/bin/bash
 
 DOTFILES=${PWD}/dotfiles
+BASHLOCAL=${PWD}/bash-local
 VIMPLUGINS_SRC=${PWD}/vim-plugins
 VIMPLUGINS_DST=~/.vim/plugin
 
 BACKUP_DF=~/.backup-dotfiles
+BACKUP_BL=~/.bash/backup-files
 BACKUP_VP=~/.vim/backup-plugins
 
 create_dir() {
@@ -43,6 +45,7 @@ make_links() {
 echo Installing dot-files and vim plugins:
 
 create_dir ${BACKUP_DF} "backup dotfiles" || exit
+create_dir ${BACKUP_BL} "bash local backup files" || exit
 
 # Optional step, vimrc includes making this directory if not exist.
 create_dir ~/.vim/tmp "vim backup files"
@@ -64,4 +67,6 @@ git submodule update git-aware-prompt
 rm -rf ~/.bash/git-aware-prompt
 mkdir -p ~/.bash
 ln -s ${PWD}/git-aware-prompt ~/.bash/
+
+make_links ${BASHLOCAL} ~/.bash/ ${BACKUP_BL}
 
