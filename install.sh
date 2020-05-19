@@ -7,52 +7,52 @@ VIMPLUGINS_DST=~/.vim/plugin
 BACKUP_DF=~/.backup-dotfiles
 BACKUP_VP=~/.vim/backup-plugins
 
+create_dir() {
+    local DIR=$1
+    local DESCR=$2
+
+    echo -n "Creating directory for $DESCR..."
+    if mkdir -p ${DIR}; then
+        echo Done
+        return 0
+    else
+        return -1
+    fi
+}
+
+make_links() {
+    local FILESPATH=$1
+    local PREFIX=$2
+    local BACKUP=$3
+
+    for file in $(ls ${FILESPATH}/[^.]* | xargs -n 1 basename); do
+        echo -n Installing ${file}...
+        local F=${PREFIX}${file}
+	    if [ -e ${F} ]; then
+            if [ -f ${F} ]; then
+                mv -f ${F} ${BACKUP}/ || { echo "Can't backup ${F} into ${BACKUP}"; exit; }
+            else
+                rm -f ${F} || { echo "${F} is not a file and can't be deleted"; exit; }
+            fi
+        fi
+	    ln -s ${FILESPATH}/${file} ${F};
+	    echo Done
+    done
+}
+
 echo Installing dot-files and vim plugins:
 
-echo -n Creating backup directory for dotfiles...
-mkdir -p ${BACKUP_DF} || { echo "Can't make backup directory \"${BACKUP_DF}\" for dotfiles"; exit; }
-echo Done
+create_dir ${BACKUP_DF} "backup dotfiles" || exit
 
 # Optional step, vimrc includes making this directory if not exist.
-echo -n Creating directory for vim backup files...
-mkdir -p ~/.vim/tmp || { echo "Can't make a directory \"~/.vim/tmp\" for vim backup files"; exit; }
-echo Done
+create_dir ~/.vim/tmp "vim backup files"
 
-echo -n Creating directory for vim plugins...
-mkdir -p ${VIMPLUGINS_DST} || { echo "Can't make directory \"${VIMPLUGINS_DST}\" for vim plugins"; exit; }
-echo Done
+create_dir ${VIMPLUGINS_DST} "vim plugins" || exit
+create_dir ${BACKUP_VP} "vim plugins backup" || exit
 
-echo -n Creating backup directory for vim plugins...
-mkdir -p ${BACKUP_VP} || { echo "Can't make backup directory \"${BACKUP_VP}\" for vim plugins"; exit; }
-echo Done
+make_links ${DOTFILES} ~/. ${BACKUP_DF}
 
-for file in $(ls ${DOTFILES}/[^.]* | xargs -n 1 basename); do
-	echo -n Installing ${file}...
-    F=~/.${file}
-	if [ -e ${F} ]; then
-        if [ -f ${F} ]; then
-            mv -f ${F} ${BACKUP_DF}/ || { echo "Can't backup ${F} into ${BACKUP_DF}"; exit; }
-        else
-            rm -f ${F} || { echo "${F} is not a file and can't be deleted"; exit; }
-        fi
-    fi
-	ln -s ${DOTFILES}/${file} ${F};
-	echo Done
-done
-
-for file in $(ls ${VIMPLUGINS_SRC}/[^.]*.vim | xargs -n 1 basename); do
-	echo -n Installing vim-plugin ${file}...
-    F=${VIMPLUGINS_DST}/${file}
-	if [ -e ${F} ]; then
-        if [ -f ${F} ]; then
-            mv -f ${F} ${BACKUP_VP}/ || { echo "Can't backup ${F} into ${BACKUP_VP}"; exit; }
-        else
-            rm -f ${F} || { echo "${F} is not a file and can't be deleted"; exit; }
-        fi
-    fi
-	ln -s ${VIMPLUGINS_SRC}/$file ${VIMPLUGINS_DST}/${file};
-	echo Done
-done
+make_links ${VIMPLUGINS_SRC} ${VIMPLUGINS_DST}/ ${BACKUP_VP}
 
 touch ~/.bash_history
 
