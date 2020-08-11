@@ -36,3 +36,10 @@
 #    date = relative
 [checkout]
 	defaultRemote = upstream
+[sendemail]
+	confirm = auto
+	smtpencryption = tls
+    from = Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+    smtpuser =
+    mtpserver = "/usr/bin/msmtp"
+    chainreplyto = true
