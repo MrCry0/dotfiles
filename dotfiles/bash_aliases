@@ -1,4 +1,5 @@
 # for git
+alias gb='git branch'
 alias gbd='git branch -D'
 alias gca='git commit -a'
 alias gcp='git cherry-pick'
