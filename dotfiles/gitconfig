@@ -39,7 +39,11 @@
 [sendemail]
 	confirm = auto
 	smtpencryption = tls
-    from = Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
-    smtpuser =
-    mtpserver = "/usr/bin/msmtp"
+	from = Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+	smtpuser = oleksandr.suvorov@toradex.com
     chainreplyto = true
+	smtpserver = smtp.office365.com
+    # smtpserver = "/usr/bin/msmtp"
+	smtpserverport = 587
+[pull]
+	ff = only
