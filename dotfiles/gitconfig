@@ -21,40 +21,38 @@
     pager = true
     decorate = always
     showbranch = always
-[url "git@github.com:MrCry0/"]
-    insteadOf = github:
+[checkout]
+    defaultRemote = upstream
 [core]
     excludesfile = ~/.gitexcludes
     autocrlf = false
-[merge]
-    tool = vimdiff
-    ff = only
-[push]
-	default = tracking
 [diff]
     algorithm = histogram
     compactionHeuristic = true
+[http]
+    cookiefile = ~/.gitcookies
+    version = HTTP/1.1
+[merge]
+    tool = vimdiff
+    # ff = only
+[push]
+    default = tracking
+[pull]
+    ff = only
 [rerere]
     enabled = true
     autoupdate = true
 [rebase]
     stat = true
-[alias]
-    wdiff = diff --color-words
-[http]
-    cookiefile = ~/.gitcookies
-    version = HTTP/1.1
-[blame]
-#    date = relative
-[checkout]
-	defaultRemote = upstream
+[url "git@github.com:MrCry0/"]
+    insteadOf = github:
 [sendemail]
-	confirm = auto
-	smtpencryption = tls
-	from = Oleksandr Suvorov <oleksandr.suvorov@foundries.io>
-	smtpuser = oleksandr.suvorov@foundries.io
+    confirm = auto
+    smtpencryption = tls
+    from = Oleksandr Suvorov <oleksandr.suvorov@foundries.io>
+    smtpuser = oleksandr.suvorov@foundries.io
     chainreplyto = true
-	smtpserver = smtp.gmail.com
+    smtpserver = smtp.gmail.com
     # smtpserver = "/usr/bin/msmtp"
 	smtpserverport = 587
 [pull]
