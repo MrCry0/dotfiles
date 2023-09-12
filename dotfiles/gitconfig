@@ -2,6 +2,16 @@
     name = Oleksandr Suvorov
     email = oleksandr.suvorov@foundries.io
     signingkey = 4798844E5CC83012
+[alias]
+    l = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
+    c = log -n 1 --pretty='%h (\"%s\")'
+    cis = commit -S
+    cu = log -n 1 --pretty="format:%h;%ai;;;;;;;%s%n"
+    cul = log --pretty="format:%h;%ai;;%s"
+    logs = log --show-signature
+    wdiff = diff --color-words
+[blame]
+    # date = relative
 [color]
     ui = true
     branch = always
