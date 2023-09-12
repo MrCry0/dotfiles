@@ -32,12 +32,12 @@ set backup			" Keep a backup file
 set backspace=2
 set clipboard+=unnamed		" put yanks/etc on the clipboard
 set errorbells			" beep/flash on errors, vil vi ha det da ???
-set expandtab
+set expandtab!
 set foldmethod=marker
 set foldlevelstart=99		" start with all folds open
 set foldopen-=search		" don't open folds when you search into them
 set foldopen-=undo		" don't open folds when you undo stuff
-set history=100			" keep 50 lines of command history
+set history=100			" keep 100 lines of command history
 set hidden			" lukker ikke ei fil i et buffer når du forlater den ("abandon")
 set hlsearch			" highlighter siste søk, kjekt....
 "set incsearch			" noen syntes dette er nice, jeg synes ikke det :P
@@ -61,7 +61,6 @@ set ts=8
 set tabstop=4			" The One True Tab
 set softtabstop=4
 set shiftwidth=4
-set expandtab
 set timeout			" allow keys to timeout
 set ttimeoutlen=100		" Timeout of successive keys from keyboard driver
 set novisualbell			" sørge for at vi bare får flash ihverfall
@@ -72,13 +71,13 @@ set wildmode=list:longest	"(file-listing when opening a new file)
 set grepprg=grep\ -nH\ $*
 
 " Disable autoloading of vimspell
-let loaded_vimspell = 1
-let spell_insert_mode = 0
-let spell_auto_type = "tex,mail"
-let spell_language_list = "norsk,english"
+" let loaded_vimspell = 1
+" let spell_insert_mode = 0
+" let spell_auto_type = "tex,mail"
+" let spell_language_list = "norsk,english"
 
 " Setup Taglist plugin
-let Tlist_Ctags_Cmd=$HOME . '/local/' . tolower(substitute(osys,"\n",'','')) . '/bin/ctags'
+" let Tlist_Ctags_Cmd=$HOME . '/local/' . tolower(substitute(osys,"\n",'','')) . '/bin/ctags'
 
 " F1 for help is really annoying.
 :nmap <F1> :echo<CR>
@@ -111,7 +110,7 @@ au BufNewFile,BufRead psql.edit.*    set tw=77 ai nocindent fileencoding=utf-8 f
 
 
 " Because I type this wrong all the time
-:command Q q
+" :command Q q
 
 
 " Highlight bogus whitespace at the end of files
@@ -121,3 +120,51 @@ match WhitespaceEOL /\s\+$/
 " Make spelling errors readable
 highlight SpellBad ctermbg=0 ctermfg=1
 
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+
+" ALE auto-formatter
+Plug 'dense-analysis/ale'
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-default branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+"Plug '~/my-prototype-plugin'
+
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+" You can revert the settings after the call like so:
+"   filetype indent off   " Disable file-type-specific indentation
+"   syntax off            " Disable syntax highlighting
