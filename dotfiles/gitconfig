@@ -1,6 +1,7 @@
 [user]
     name = Oleksandr Suvorov
-    email = oleksandr.suvorov@toradex.com
+    email = oleksandr.suvorov@foundries.io
+    signingkey = 4798844E5CC83012
 [color]
     ui = true
     branch = always
@@ -32,6 +33,7 @@
     wdiff = diff --color-words
 [http]
     cookiefile = ~/.gitcookies
+    version = HTTP/1.1
 [blame]
 #    date = relative
 [checkout]
@@ -39,10 +41,10 @@
 [sendemail]
 	confirm = auto
 	smtpencryption = tls
-	from = Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
-	smtpuser = oleksandr.suvorov@toradex.com
+	from = Oleksandr Suvorov <oleksandr.suvorov@foundries.io>
+	smtpuser = oleksandr.suvorov@foundries.io
     chainreplyto = true
-	smtpserver = smtp.office365.com
+	smtpserver = smtp.gmail.com
     # smtpserver = "/usr/bin/msmtp"
 	smtpserverport = 587
 [pull]
