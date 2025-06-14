@@ -1,6 +1,8 @@
-[user]
-    name = Oleksandr Suvorov
-    email = cryosay@gmail.com
+[includeIf "gitdir/i:~/work/"]
+    path = /home/cryo/.gitconfig-work
+
+[includeIf "gitdir/i:~/src/"]
+    path = /home/cryo/.gitconfig-cryo
 [color]
     ui = true
     branch = always
