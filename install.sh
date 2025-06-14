@@ -64,9 +64,9 @@ echo Finish.
 echo Installing git-aware-prompt bash plugin
 git submodule init git-aware-prompt
 git submodule update git-aware-prompt
+mkdir -p ~/.bash
 rm -rf ~/.bash/git-aware-prompt
 mkdir -p ~/.bash
 ln -s ${PWD}/git-aware-prompt ~/.bash/
 
 make_links ${BASHLOCAL} ~/.bash/ ${BACKUP_BL}
-
