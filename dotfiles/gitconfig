@@ -26,7 +26,13 @@
 [core]
     excludesfile = ~/.gitexcludes
     autocrlf = false
-	compression = 0
+    compression = 0
+    editor = vim
+[merge]
+    tool = vimdiff
+    ff = only
+[push]
+    default = tracking
 [diff]
     algorithm = histogram
     compactionHeuristic = true
