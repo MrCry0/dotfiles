@@ -1,15 +1,7 @@
 [user]
     name = Oleksandr Suvorov
     email = cryosay@gmail.com
-	signingkey = 21317A636DA16768
-[alias]
-    l = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
-    c = log -n 1 --pretty='%h (\"%s\")'
-    cis = commit -S
-    cu = log -n 1 --pretty="format:%h;%ai;;;;;;;%s%n"
-    cul = log --pretty="format:%h;%ai;;%s"
-    logs = log --show-signature
-    wdiff = diff --color-words
+    signingkey = 21317A636DA16768
 [blame]
     # date = relative
 [color]
@@ -39,8 +31,8 @@
 [http]
     cookiefile = ~/.gitcookies
     version = HTTP/1.1
-	postBuffer = 1048576000
-	maxRequestBuffer = 100M
+    postBuffer = 1048576000
+    maxRequestBuffer = 100M
 [merge]
     tool = vimdiff
 [push]
@@ -63,4 +55,25 @@
     smtpserverport = 587
     smtppass =
 [commit]
-	gpgsign = true
+    gpgsign = true
+[alias]
+    l = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
+    c = log -n 1 --pretty='%h (\"%s\")'
+    cis = commit -S
+    cu = log -n 1 --pretty="format:%h;%ai;;;;;;;%s%n"
+    cul = log --pretty="format:%h;%ai;;%s"
+    logs = log --show-signature
+    wdiff = diff --color-words
+    lg = "!f() { \
+        git log --all --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
+        sed \
+        -e 's#<sig>G</sig>#Good#' \
+        -e 's#<sig>B</sig>#\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD#' \
+        -e 's#<sig>U</sig>#Unknown#' \
+        -e 's#<sig>X</sig>#Expired#' \
+        -e 's#<sig>Y</sig>#Expired Key#' \
+        -e 's#<sig>R</sig>#Revoked#' \
+        -e 's#<sig>E</sig>#Missing Key#' \
+        -e 's#<sig>N</sig>#None#' | \
+        less -r; \
+    }; f"
