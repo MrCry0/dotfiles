@@ -15,6 +15,7 @@
 [core]
     excludesfile = ~/.gitexcludes
     autocrlf = false
+	editor = vim
 [merge]
     tool = vimdiff
     ff = only
