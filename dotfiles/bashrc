@@ -1,8 +1,13 @@
-#############################################
-# ##### SANDSMARK'S hobbgobble bashrc ##### #
-#############################################
-# ##### COPYBLEH 2010 ##### #
-#############################
+########################################
+# Cryo's bashrc based on SANDSMARK'S one
+# SPDX-License-Identifier: MIT
+########################################
+
+# If bash is not running interactively, do nothing
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 #########
 # general
