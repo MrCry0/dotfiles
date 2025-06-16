@@ -175,6 +175,7 @@ else print $0;}'"'"')'
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 
+# set a variable identifying the chroot you work in. it is used in the prompt below
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
