@@ -9,3 +9,9 @@ alias grp='git remote prune'
 alias grs='git remote show'
 alias gru='git remote update'
 alias glo='git log --pretty=oneline'
+# List local branches
+alias gb="git branch"
+# Delete a local branch
+alias gbd="git branch -d"
+# List commits log
+alias gl="git log"
