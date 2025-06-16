@@ -132,8 +132,6 @@ function ff    { find . -name $@; }
 
 function dmsg  { dmesg | p; }
 
-# function cd    { builtin cd "$@" && ls; }
-
 function mkcd    { mkdir "$@" && builtin cd "$@"; }
 
 function h2d    { echo "ibase=16; $@"|bc; }
@@ -173,11 +171,6 @@ else if (NF>3) print $1 "/" $2 "/.../" $NF;
 else print $1 "/.../" $NF; }
 else print $0;}'"'"')'
 
-#############
-# completions
-
-# complete -W '$(echo $(cut -d\  -f1 < ~/.ssh/known_hosts | cut -d, -f1))' mosh
-
 # git prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
@@ -189,14 +182,6 @@ fi
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
-
-#if [ -n "$force_color_prompt" ]; then
-#    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-#        color_prompt=yes
-#    else
-#        color_prompt=
-#    fi
-# fi
 
 ########
 # prompt
