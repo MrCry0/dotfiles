@@ -29,7 +29,8 @@ declare -x PROMPT_COMMAND='ret=$?; if [ $ret -ne 0 ] ; then echo -e "returned \0
 
 declare -x HISTFILE=~/.bash_history
 declare -x HISTCONTROL=ignoreboth:erasedups
-declare -x HISTSIZE=-1
+declare -x HISTSIZE=1000
+declare -x HISTFILESIZE=2000
 
 declare -x BROWSER=chromium
 
