@@ -62,6 +62,7 @@ declare -x LSAN_OPTIONS=suppressions=${HOME}/.lsan.suppressions
 declare -x LIBVA_DRIVER_NAME=nvidia
 declare -x VDPAU_DRIVER=nvidia
 
+LESSPIPE=$(which /usr/bin/lesspipe); [ -n ${LESSPIPE} ] && eval "$(SHELL=/bin/sh ${LESSPIPE})"
 
 #################
 # shell variables
