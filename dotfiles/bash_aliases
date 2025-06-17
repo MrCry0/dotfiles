@@ -1,17 +1,33 @@
 # for git
+# List local branches
 alias gb='git branch'
+# List branches contain this commit hash
 alias gbc='git branch -a --contains'
+# Delete a local branch
 alias gbd='git branch -D'
-alias gca='git commit -S -s -a'
+# Commit all changes
+alias gca='git commit -a'
+# Cherry-pick a commit
 alias gcp='git cherry-pick'
+# Clone repo from upstream
 alias gcu='git clone -o upstream'
+# Fetch a branch from upstream
 alias gfu='git fetch upstream'
+# Show commit log
 alias gl="git log"
+# Show one-line-formatted log
 alias glo='git log --pretty=oneline --abbrev-commit'
+# Checkout a branch
 alias go='git checkout'
+# Push a branch to origin
 alias gpo='git push origin'
+# Pull a branch from upstream
 alias gpu='git pull upstream'
+# Prune remote branches
 alias grp='git remote prune'
+# List remote branches
 alias grs='git remote show'
+# Update all from remotes
 alias gru='git remote update'
+# Show all remote repos
 alias grv='git remote -v'
