@@ -31,6 +31,7 @@
 [rebase]
     stat = true
 [alias]
+    l = log --oneline --graph --decorate
     wdiff = diff --color-words
     lg = "!f() { \
         git log --all --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
