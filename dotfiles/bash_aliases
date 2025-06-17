@@ -15,3 +15,5 @@ alias gb="git branch"
 alias gbd="git branch -d"
 # List commits log
 alias gl="git log"
+# List remote urls
+alias grv="git remote -v"
