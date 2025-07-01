@@ -27,3 +27,5 @@ alias gbd="git branch -d"
 alias gl="git log"
 # List remote urls
 alias grv="git remote -v"
+# List untracked files
+alias gsu="git status -u"
