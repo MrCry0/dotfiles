@@ -1,14 +1,19 @@
 #!/bin/bash
 
 DOTFILES=${PWD}/dotfiles
+
 BASHLOCAL=${PWD}/bash-local
+
+VIMCONF_SRC=${PWD}/vim
+VIMCONF_DST=~/.vim
 VIMPLUGINS_SRC=${PWD}/vim-plugins
 VIMPLUGINS_DST=~/.vim/plugin
 VIMFTPLUGIN_SRC=${PWD}/vim-ftplugin
-VIMFTPLUGIN_DST=~/.vim/ftplugin
+VIMFTPLUGIN_DST=${VIMCONF_DST}/ftplugin
 
 BACKUP_DF=~/.backup-dotfiles
 BACKUP_BL=~/.bash/backup-files
+BACKUP_VIMCONF=${VIMCONF_DST}/backup
 BACKUP_VIMPLUGIN=~/.vim/backup/plugin
 BACKUP_VIMFTPLUGIN=~/.vim/backup/ftplugin
 
@@ -53,12 +58,14 @@ create_dir ${BACKUP_BL} "bash local backup files" || exit
 # Optional step, vimrc includes making this directory if not exist.
 create_dir ~/.vim/tmp "vim backup files"
 
+create_dir ${VIMCONF_DST} "vim config" || exit
 create_dir ${VIMPLUGINS_DST} "vim plugins" || exit
 create_dir ${BACKUP_VIMPLUGIN} "vim plugins backup" || exit
 create_dir ${BACKUP_VIMFTPLUGIN} "vim FT plugins backup" || exit
 
 make_links ${DOTFILES} ~/. ${BACKUP_DF}
 
+make_links ${VIMCONF_SRC} ${VIMCONF_DST}/ ${BACKUP_VIMCONF}
 make_links ${VIMPLUGINS_SRC} ${VIMPLUGINS_DST}/ ${BACKUP_VIMPLUGIN}
 make_links ${VIMFTPLUGINS_SRC} ${VIMFTPLUGINS_DST}/ ${BACKUP_VIMFTPLUGIN}
 
