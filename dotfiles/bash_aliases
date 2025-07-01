@@ -31,3 +31,5 @@ alias grs='git remote show'
 alias gru='git remote update'
 # Show all remote repos
 alias grv='git remote -v'
+# List untracked files
+alias gsu="git status -u"
