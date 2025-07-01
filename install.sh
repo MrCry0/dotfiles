@@ -14,8 +14,8 @@ VIMFTPLUGIN_DST=${VIMCONF_DST}/ftplugin
 BACKUP_DF=~/.backup-dotfiles
 BACKUP_BL=~/.bash/backup-files
 BACKUP_VIMCONF=${VIMCONF_DST}/backup
-BACKUP_VIMPLUGIN=~/.vim/backup/plugin
-BACKUP_VIMFTPLUGIN=~/.vim/backup/ftplugin
+BACKUP_VIMPLUGIN=${BACKUP_VIMCONF}/plugin
+BACKUP_VIMFTPLUGIN=${BACKUP_VIMCONF}/ftplugin
 
 create_dir() {
     local DIR=$1
@@ -38,7 +38,7 @@ make_links() {
     for file in $(ls ${FILESPATH}/[^.]* | xargs -n 1 basename); do
         echo -n Installing ${file}...
         local F=${PREFIX}${file}
-	    if [ -e ${F} ]; then
+	if [ -e ${F} -a ! -L ${F} ]; then
             if [ -f ${F} ]; then
                 mv -f ${F} ${BACKUP}/ || { echo "Can't backup ${F} into ${BACKUP}"; exit; }
             else
