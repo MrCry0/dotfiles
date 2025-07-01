@@ -76,8 +76,9 @@ set grepprg=grep\ -nH\ $*
 " let spell_auto_type = "tex,mail"
 " let spell_language_list = "norsk,english"
 
-" Setup Taglist plugin
-" let Tlist_Ctags_Cmd=$HOME . '/local/' . tolower(substitute(osys,"\n",'','')) . '/bin/ctags'
+" Setup plugins
+let Tlist_Ctags_Cmd=$HOME . '/local/' . tolower(substitute(osys,"\n",'','')) . '/bin/ctags'
+let g:linuxsty_patterns = [ "/linux/", "/kernel/", "/u-boot/" ]
 
 " F1 for help is really annoying.
 :nmap <F1> :echo<CR>
