@@ -46,6 +46,7 @@
         -e 's#<sig>N</sig>#None#' | \
         less -r; \
     }; f"
+	c = log --pretty=format:'%h (\"%s\")' -n 1
 [http]
     cookiefile = ~/.gitcookies
 [blame]
