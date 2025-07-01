@@ -1,14 +1,18 @@
 #!/bin/bash
 
 DOTFILES=${PWD}/dotfiles
+
+VIMCONF_SRC=${PWD}/vim
+VIMCONF_DST=~/.vim
 VIMPLUGIN_SRC=${PWD}/vim-plugins
-VIMPLUGIN_DST=~/.vim/plugin
+VIMPLUGIN_DST=${VIMCONF_DST}/plugin
 VIMFTPLUGIN_SRC=${PWD}/vim-ftplugin
-VIMFTPLUGIN_DST=~/.vim/ftplugin
+VIMFTPLUGIN_DST=${VIMCONF_DST}/ftplugin
 
 BACKUP_DF=~/.backup-dotfiles
-BACKUP_VIMPLUGIN=~/.vim/backup/plugin
-BACKUP_VIMFTPLUGIN=~/.vim/backup/ftplugin
+BACKUP_VIMCONF=${VIMCONF_DST}/backup
+BACKUP_VIMPLUGIN=${BACKUP_VIMCONF}/plugin
+BACKUP_VIMFTPLUGIN=${BACKUP_VIMCONF}/ftplugin
 
 echo Installing dot-files and vim plugins:
 
@@ -22,11 +26,19 @@ mkdir -p ~/.vim/tmp || { echo "Can't make a directory \"~/.vim/tmp\" for vim bac
 echo Done
 
 echo -n Creating directory for vim plugins...
+mkdir -p ${VIMCONF_DST} || { echo "Can't make directory \"${VIMCONF_DST}\" for vim plugins"; exit; }
+echo Done
+
+echo -n Creating directory for vim plugins...
 mkdir -p ${VIMPLUGIN_DST} || { echo "Can't make directory \"${VIMPLUGIN_DST}\" for vim plugins"; exit; }
 echo Done
 
 echo -n Creating directory for vim ftplugins...
 mkdir -p ${VIMFTPLUGIN_DST} || { echo "Can't make directory \"${VIMFTPLUGIN_DST}\" for vim plugins"; exit; }
+echo Done
+
+echo -n Creating backup directory for vim plugins...
+mkdir -p ${BACKUP_VIMCONF} || { echo "Can't make backup directory \"${BACKUP_VIMCONF}\" for vim plugins"; exit; }
 echo Done
 
 echo -n Creating backup directory for vim plugins...
@@ -48,6 +60,20 @@ for file in $(ls ${DOTFILES}/[^.]* | xargs -n 1 basename); do
         fi
     fi
 	ln -s ${DOTFILES}/${file} ${F};
+	echo Done
+done
+
+for file in $(ls ${VIMCONF_SRC}/[^.]*.vim | xargs -n 1 basename); do
+	echo -n Installing vim extra config ${file}...
+    F=${VIMCONF_DST}/${file}
+	if [ -e "${F}" -a ! -L "${F}" ]; then
+        if [ -f ${F} ]; then
+            mv -f ${F} ${BACKUP_VIMCONF}/ || { echo "Can't backup ${F} into ${BACKUP_VIMCONF}"; exit; }
+        else
+            rm -f ${F} || { echo "${F} is not a file and can't be deleted"; exit; }
+        fi
+    fi
+	ln -s ${VIMCONF_SRC}/$file ${VIMCONF_DST}/${file};
 	echo Done
 done
 
