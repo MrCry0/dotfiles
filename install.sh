@@ -52,7 +52,7 @@ echo Done
 for file in $(ls ${DOTFILES}/[^.]* | xargs -n 1 basename); do
 	echo -n Installing ${file}...
     F=~/.${file}
-	if [ -e ${F} ]; then
+	if [ -e "${F}" -a ! -L "${F}" ]; then
         if [ -f ${F} ]; then
             mv -f ${F} ${BACKUP_DF}/ || { echo "Can't backup ${F} into ${BACKUP_DF}"; exit; }
         else
@@ -80,7 +80,7 @@ done
 for file in $(ls ${VIMPLUGIN_SRC}/[^.]*.vim | xargs -n 1 basename); do
 	echo -n Installing vim-plugin ${file}...
     F=${VIMPLUGIN_DST}/${file}
-	if [ -e ${F} ]; then
+	if [ -e "${F}" -a ! -L "${F}" ]; then
         if [ -f ${F} ]; then
             mv -f ${F} ${BACKUP_VIMPLUGIN}/ || { echo "Can't backup ${F} into ${BACKUP_VIMPLUGIN}"; exit; }
         else
@@ -94,7 +94,7 @@ done
 for file in $(ls ${VIMFTPLUGIN_SRC}/[^.]*.vim | xargs -n 1 basename); do
 	echo -n Installing vim-ftplugin ${file}...
     F=${VIMFTPLUGIN_DST}/${file}
-	if [ -e ${F} ]; then
+	if [ -e "${F}" -a ! -L "${F}" ]; then
         if [ -f ${F} ]; then
             mv -f ${F} ${BACKUP_VIMFTPLUGIN}/ || { echo "Can't backup ${F} into ${BACKUP_VIMFTPLUGIN}"; exit; }
         else
