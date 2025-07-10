@@ -34,7 +34,7 @@
     l = log --graph --color --pretty=format:'%C(bold yellow) %C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)'
     wdiff = diff --color-words
     lg = "!f() { \
-        git log --all --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
+        git log --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
         sed \
         -e 's#<sig>G</sig>#Good#' \
         -e 's#<sig>B</sig>#\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD#' \
