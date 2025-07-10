@@ -18,7 +18,7 @@ alias grs='git remote show'
 # Update all from remotes
 alias gru='git remote update'
 # Show one-line-formatted log
-alias glo='git log --pretty=oneline'
+alias glo='git log --pretty=format:"%h %s"'
 # List local branches
 alias gb="git branch"
 # Delete a local branch
