@@ -57,7 +57,8 @@
 [commit]
     gpgsign = true
 [alias]
-    l = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
+    lo = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
+    l = log --graph --color --pretty=format:'%C(bold yellow) %C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)'
     c = log -n 1 --pretty='%h (\"%s\")'
     cis = commit -S
     cu = log -n 1 --pretty="format:%h;%ai;;;;;;;%s%n"
