@@ -17,7 +17,7 @@ umask 022
 ###############
 # env variables
 
-export PATH="~/bin:/usr/local/bin/:$PATH"
+export PATH="~/bin:~/.local/bin:/usr/local/bin/:$PATH"
 
 export PAGER='less'
 export EDITOR='vim'
