@@ -1,7 +1,7 @@
 [user]
     name = Oleksandr Suvorov
-    email = oleksandr.suvorov@foundries.io
-    signingkey = 4798844E5CC83012
+    email = cryosay@gmail.com
+	signingkey = 21317A636DA16768
 [alias]
     l = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
     c = log -n 1 --pretty='%h (\"%s\")'
@@ -26,15 +26,17 @@
 [core]
     excludesfile = ~/.gitexcludes
     autocrlf = false
+	compression = 0
 [diff]
     algorithm = histogram
     compactionHeuristic = true
 [http]
     cookiefile = ~/.gitcookies
     version = HTTP/1.1
+	postBuffer = 1048576000
+	maxRequestBuffer = 100M
 [merge]
     tool = vimdiff
-    # ff = only
 [push]
     default = tracking
 [pull]
@@ -44,16 +46,15 @@
     autoupdate = true
 [rebase]
     stat = true
-[url "git@github.com:MrCry0/"]
-    insteadOf = github:
 [sendemail]
     confirm = auto
     smtpencryption = tls
-    from = Oleksandr Suvorov <oleksandr.suvorov@foundries.io>
-    smtpuser = oleksandr.suvorov@foundries.io
+    from = Oleksandr Suvorov <cryosay@gmail.com>
+    smtpuser = cryosay@gmail.com
     chainreplyto = true
     smtpserver = smtp.gmail.com
     # smtpserver = "/usr/bin/msmtp"
-	smtpserverport = 587
-[pull]
-	ff = only
+    smtpserverport = 587
+    smtppass =
+[commit]
+	gpgsign = true
