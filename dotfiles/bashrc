@@ -58,6 +58,9 @@ export LSAN_OPTIONS=suppressions=${HOME}/.lsan.suppressions
 export LIBVA_DRIVER_NAME=iHD
 export VDPAU_DRIVER=va_gl
 
+# Add local libraries like volk, uhd, etc.
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
 LESSPIPE=$(which /usr/bin/lesspipe); [ -n ${LESSPIPE} ] && eval "$(SHELL=/bin/sh ${LESSPIPE})"
 
 #################
