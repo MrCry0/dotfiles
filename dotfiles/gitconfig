@@ -36,17 +36,23 @@
     l = log --graph --color --pretty=format:'%C(bold yellow) %C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)'
     wdiff = diff --color-words
     lg = "!f() { \
-        git log --color --graph --pretty=format:'%C(bold yellow)<sig>%G?</sig>%C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)' | \
-        sed \
-        -e 's#<sig>G</sig>#Good#' \
-        -e 's#<sig>B</sig>#\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD#' \
-        -e 's#<sig>U</sig>#Unknown#' \
-        -e 's#<sig>X</sig>#Expired#' \
-        -e 's#<sig>Y</sig>#Expired Key#' \
-        -e 's#<sig>R</sig>#Revoked#' \
-        -e 's#<sig>E</sig>#Missing Key#' \
-        -e 's#<sig>N</sig>#None#' | \
-        less -r; \
+        RESET=$(tput sgr0); \
+        BOLD=$(tput5 bold); \
+        RED=$(tput setaf 1); GREEN=$(tput setaf 2); YELLOW=$(tput setaf 3); \
+        BOLDRED=\"${BOLD}${RED}\"; BOLDGREEN=\"${BOLD}${GREEN}\"; BOLDYELLOW=\"${BOLD}${YELLOW}\"; \
+        LG_FORMAT='<sig>%G?</sig> %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)'; \
+        echo FMT=\"$LG_FORMAT\"; \
+        git log --color --graph --pretty=format:\"${LG_FORMAT}\" | \
+            sed \
+                -e \"s#<sig>G</sig>#${BOLDGREEN}Good${RESET}#; \
+                     s#<sig>B</sig>#${BOLDRED}\\nBAD \\nBAD \\nBAD \\nBAD \\nBAD${RESET}#; \
+                     s#<sig>U</sig>#${YELLOW}Unknown${RESET}#; \
+                     s#<sig>X</sig>#${YELLOW}Expired${RESET}#; \
+                     s#<sig>Y</sig>#${YELLOW}Expired Key${RESET}#; \
+                     s#<sig>R</sig>#${BOLDRED}Revoked${RESET}#; \
+                     s#<sig>E</sig>#${RED}Missing Key${RESET}#; \
+                     s#<sig>N</sig>#${BOLDYELLOW}None${RESET}#\" | \
+            less -r; \
     }; f"
 	c = log --pretty=format:'%h (\"%s\")' -n 1
 [http]
