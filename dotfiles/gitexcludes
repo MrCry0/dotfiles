@@ -71,3 +71,11 @@ Thumbs.db
 CMakeLists.txt.user
 .kdev_include_paths
 moc_*.cpp
+
+# Local Claude private settings
+**/.claude/settings.local.json
+
+# AI files
+AGENTS.md
+CLAUDE.md
+/.claude
