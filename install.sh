@@ -2,7 +2,7 @@
 
 DOTFILES=${PWD}/dotfiles
 
-VIMCONF_SRC=${PWD}/vim
+VIMCONF_SRC=${PWD}/vim-conf
 VIMCONF_DST=~/.vim
 VIMPLUGIN_SRC=${PWD}/vim-plugins
 VIMPLUGIN_DST=${VIMCONF_DST}/plugin
