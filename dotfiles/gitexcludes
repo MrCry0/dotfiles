@@ -20,7 +20,7 @@
 ###################
 *.com
 *.class
-*.dll
+# *.dll
 *.exe
 *.o
 *.so
@@ -71,3 +71,8 @@ Thumbs.db
 CMakeLists.txt.user
 .kdev_include_paths
 moc_*.cpp
+
+# AI agent's files
+AGENTS.md
+CLAUDE.md
+/.claude

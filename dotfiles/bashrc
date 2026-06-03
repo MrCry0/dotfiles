@@ -47,7 +47,7 @@ export QT_NO_GLIB=1
 
 export QTC_HELPVIEWER_BACKEND=textbrowser
 
-export QT_AUTO_SCREEN_SCALE_FACTOR=1
+# export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
 export QTKEYCHAIN_BACKEND=kwallet5
 
@@ -204,3 +204,22 @@ else
     export PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 
 fi
+export PATH=~/.npm-global/bin:$PATH
+
+export PROTON="$HOME/.local/share/Steam/steamapps/common/Proton 10.0/proton"
+export COMPAT="$HOME/.steam/steam/steamapps/compatdata/2540692999"
+export STEAMROOT="$HOME/.local/share/Steam"
+
+export QSYS_ROOTDIR="/home/cryo/apps/intelFPGA/20.1/quartus/sopc_builder/bin"
+
+# Added by Quartus Prime software
+export SALT_LICENSE_FILE="$SALT_LICENSE_FILE;/home/cryo/.altera.quartus/questa_lic.dat"
+
+# opencode
+export PATH=/home/cryo/.opencode/bin:$PATH
+
+# gO
+export PATH=$PATH:$(/usr/bin/go env GOPATH)/bin
+
+# OpenClaw Completion
+source "/home/cryo/.openclaw/completions/openclaw.bash"

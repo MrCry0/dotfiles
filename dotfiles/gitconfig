@@ -18,6 +18,7 @@
     excludesfile = ~/.gitexcludes
     autocrlf = false
 	editor = vim
+	hooksPath = .githooks
 [merge]
     tool = vimdiff
     ff = only
@@ -59,3 +60,12 @@
     cookiefile = ~/.gitcookies
 [blame]
 #    date = relative
+[sendemail]
+	transferEncoding = 7bit
+	smtpServer = smtp.gmail.com
+	smtpServerPort = 587
+	smtpEncryption = tls
+	smtpUser = cryosay@gmail.com
+	from = Oleksandr Suvorov <cryosay@gmail.com>
+[credential]
+	helper = store --file ~/.git-credentials
