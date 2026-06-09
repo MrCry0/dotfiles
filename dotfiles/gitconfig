@@ -69,3 +69,6 @@
 	from = Oleksandr Suvorov <cryosay@gmail.com>
 [credential]
 	helper = store --file ~/.git-credentials
+[credential "https://gitlab.gnassass.int"]
+	helper =
+	helper = !/usr/bin/glab auth git-credential
