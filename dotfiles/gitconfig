@@ -1,7 +1,6 @@
 [user]
     name = Oleksandr Suvorov
     email = cryosay@gmail.com
-    signingkey = 21317A636DA16768
 [blame]
     # date = relative
 [color]
@@ -55,7 +54,7 @@
     smtpserverport = 587
     smtppass =
 [commit]
-    gpgsign = true
+    gpgsign = false
 [alias]
     lo = log --graph --pretty=format:'%C(auto)%h%C(auto)%d %s %C(dim white)(%aN, %ar)'
     l = log --graph --color --pretty=format:'%C(bold yellow) %C(reset) %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(blue)<%an>%C(reset)'
