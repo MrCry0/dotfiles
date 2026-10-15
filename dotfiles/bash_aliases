@@ -23,8 +23,12 @@ alias go='git checkout'
 alias gpo='git push origin'
 # Pull a branch from upstream
 alias gpu='git pull upstream'
-# Prune remote branches
+# Prune a remote branch
 alias grp='git remote prune'
+# Prune a remote branch origin
+alias grpo='c="git remote prune origin"; echo $c; $c; unset c'
+# Prune a remote branch upstream
+alias grpu='c="git remote prune upstream"; echo $c; $c; unset c'
 # List remote branches
 alias grs='git remote show'
 # Update all from remotes
