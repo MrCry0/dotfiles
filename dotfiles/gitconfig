@@ -69,3 +69,7 @@
 	from = Oleksandr Suvorov <cryosay@gmail.com>
 [credential]
 	helper = store --file ~/.git-credentials
+[init]
+	defaultBranch = main
+[gpg "ssh"]
+	allowedSignersFile = ${HOME}/.config/git/allowed_signers
